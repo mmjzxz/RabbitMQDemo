@@ -34,7 +34,21 @@ public class SpringAmqpTest {
     @Test
     public void testSendFanoutExchange() {
         String exchangeName = "itcast.fanout";
-        String message = "hello, fanout exchange!";
+        String message = "hello, fanout exchange1111!";
         rabbitTemplate.convertAndSend(exchangeName, "", message);
+    }
+
+    @Test
+    public void testSendDirectExchange() {
+        String exchangeName = "itcast.direct";
+        String message = "hello, red!";
+        rabbitTemplate.convertAndSend(exchangeName, "red", message);
+    }
+
+    @Test
+    public void testSendTopicExchange() {
+        String exchangeName = "itcast.topic";
+        String message = "喜报！孙悟空大战哥斯拉，胜!";
+        rabbitTemplate.convertAndSend(exchangeName, "china.news", message);
     }
 }
